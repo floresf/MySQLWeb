@@ -1,0 +1,651 @@
+############################################ Advisor ######################################
+
+Referenced by: AdvisorAOE
+
+create table Advisor
+(
+AID int(11) auto_increment,
+fName varchar(50) not null,
+lName varchar(100) not null,
+RID int(11),
+foreign key(RID) references Room(RID),
+primary key (AID)
+)
+Engine = innodb;
+
+
+INSERT INTO Advisor (AID,fName,lName,RID)
+VALUES
+(1,"Emily","Logan",1),
+(2,"Evan","Mathews",2),
+(3,"Timothy","Donaldson",3),
+(4,"Hilel","Harper",4),
+(5,"Rose","Lang",5);
+############################################ AdvisorAOE ######################################
+
+create table AdviseStudent
+(
+AID int,
+SID int,
+foreign key(AID) references Advisor(AID),
+foreign key(SID) references Student(SID)
+)
+Engine = innodb;
+
+INSERT INTO AdviseStudent (AID,SID) VALUES (5,2),(2,3),(3,1),(3,4),(5,5),(1,6),(3,13),(5,7),(5,8),(3,9),(4,12),(3,10),(2,11),(2,14),(5,15);
+
+############################################ AdvisorAOE ######################################
+NO WARNINGS
+Referenced by: 
+
+create table AdvisorAOE
+(
+AID int,
+area varchar(100),
+foreign key(AID) references Advisor(AID)
+)
+Engine=innodb;
+
+insert into AdvisorAOE(AID,area)
+values
+(1,'Financial'),
+(1,'Business'),
+(2,'Science'),
+(3,'Math'),
+(4,'History'),
+(5,'Business');
+
+############################################ Class ######################################
+
+Referenced by: 
+
+CREATE TABLE Class
+(
+CID INT AUTO_INCREMENT,
+startTime VARCHAR(50) NOT NULL,
+endTime VARCHAR(50) NOT NULL,
+SEMCODE VARCHAR(5),
+CNUM VARCHAR(200),
+FID INT,
+RID INT,
+PRIMARY KEY (CID),
+FOREIGN KEY (SEMCODE) REFERENCES Semester (CNUM),
+FOREIGN KEY (CNUM) REFERENCES Course (CNUM),
+FOREIGN KEY (FID) REFERENCES Faculty (FID),
+FOREIGN KEY (RID) REFERENCES Room (RID)
+)
+Engine=innodb;
+
+
+INSERT INTO Class (startTime,endTime,SEMCODE,CNUM,FID,RID)
+VALUES ("09:30:00","10:45:00","FA-15","I-101",1,2),
+("09:30:00","10:45:00","FA-15","I-201",3,4),
+("09:30:00","10:45:00","FA-15","I-300",5,6),
+("11:15:00","12:30:00","FA-15","I-101",1,2),
+("11:15:00","12:30:00","FA-15","I-201",3,5),
+("11:15:00","12:30:00","FA-15","I-300",5,8),
+("01:00:00","02:30:00","FA-15","I-101",4,12),
+("01:00:00","02:30:00","FA-15","I-400",2,9),
+("01:00:00","02:30:00","FA-15","I-453",5,8),
+("03:00:00","04:30:00","FA-15","I-101",6,2),
+("03:00:00","04:30:00","FA-15","I-308",3,7),
+("03:00:00","04:30:00","FA-15","I-202",7,9),
+
+("09:30:00","10:45:00","FA-16","I-101",1,2),
+("09:30:00","10:45:00","FA-16","I-201",3,4),
+("09:30:00","10:45:00","FA-16","I-300",5,6),
+("11:15:00","12:30:00","FA-16","I-101",1,2),
+("11:15:00","12:30:00","FA-16","I-201",3,5),
+("11:15:00","12:30:00","FA-16","I-300",5,8),
+("01:00:00","02:30:00","FA-16","I-101",4,12),
+("01:00:00","02:30:00","FA-16","I-400",2,9),
+("01:00:00","02:30:00","FA-16","I-453",5,8),
+("03:00:00","04:30:00","FA-16","I-101",6,2),
+("03:00:00","04:30:00","FA-16","I-308",3,7),
+("03:00:00","04:30:00","FA-16","I-202",7,9),
+
+("09:30:00","10:45:00","SP-15","I-101",1,2),
+("09:30:00","10:45:00","SP-15","I-201",3,4),
+("09:30:00","10:45:00","SP-15","I-300",5,6),
+("11:15:00","12:30:00","SP-15","I-101",1,2),
+("11:15:00","12:30:00","SP-15","I-201",3,5),
+("11:15:00","12:30:00","SP-15","I-300",5,8),
+("01:00:00","02:30:00","SP-15","I-101",4,12),
+("01:00:00","02:30:00","SP-15","I-400",2,9),
+("01:00:00","02:30:00","SP-15","I-453",5,8),
+("03:00:00","04:30:00","SP-15","I-101",6,2),
+("03:00:00","04:30:00","SP-15","I-308",3,7),
+("03:00:00","04:30:00","SP-15","I-202",7,9),
+
+("09:30:00","10:45:00","SP-15","I-101",1,2),
+("09:30:00","10:45:00","SP-15","I-201",3,4),
+("09:30:00","10:45:00","SP-15","I-300",5,6),
+("11:15:00","12:30:00","SP-15","I-101",1,2),
+("11:15:00","12:30:00","SP-15","I-201",3,5),
+("11:15:00","12:30:00","SP-15","I-300",5,8),
+("01:00:00","02:30:00","SP-15","I-101",4,12),
+("01:00:00","02:30:00","SP-15","I-400",2,9),
+("01:00:00","02:30:00","SP-15","I-453",5,8),
+("03:00:00","04:30:00","SP-15","I-101",6,2),
+("03:00:00","04:30:00","SP-15","I-308",3,7),
+("03:00:00","04:30:00","SP-15","I-202",7,9);
+
+
+
+############################################ Course ######################################
+No Warnings
+
+Referenced by: 
+
+create table Course
+(
+    CNUM varchar(200) not null,
+    creditHrs int default 0,
+    title varchar(200),
+    DEPTID int(11),
+    primary key(CNUM),
+    foreign key(DEPTID) references Department(DEPTID)
+)
+Engine=innodb;
+
+
+INSERT INTO Course (CNUM, creditHrs, title, DEPTID)
+VALUES ("I-308",3,"Information Representation",1),
+("I-101",4,"Intro to Informatics",1),
+("I-201",4,"Math Foundations of Informatics",1),
+("I-202",3,"Social Informatics",1),
+("I-300",3,"Human-Computer Interaction",1),
+("I-400",3,"Big Data",1),
+("I-453",3,"Computer Ethics",1),
+("A-201",3,"Advanced Accounting",2),
+("A-100",3,"Accounting",2),
+("A-300",3,"Super Accounting",2),
+("M-300",3,"Marketing",2),
+("F-300",3,"Finance",2),
+("X-300",3,"Data Skills",2),
+("P-300",3,"Presentation",2),
+("G-100",3,"Basic Geology",3),
+("G-150",3,"Western Geology",3),
+("G-201",3,"Geology of Malasia",3),
+("G-230",3,"Cryptic Geology",3),
+("G-300",3,"Corporations Ruin Geology",3),
+("G-400",3,"Mars Geology",3);
+
+######################################### CoursePreq #############################################
+
+Referenced by: 
+
+create table CoursePreq
+(
+    CNUM VARCHAR(200),
+    coursePreq varchar(200),
+    foreign key(CNUM) references Course(CNUM)
+)
+Engine=innodb;
+
+INSERT INTO CoursePreq (CNUM,coursePreq)
+VALUES ("I-300","I-101"),
+("I-400","I-101"),
+("A-201","A-100"),
+("G-300","G-100");
+
+############################################ Department ######################################
+
+Referenced by: Course, Major
+
+CREATE TABLE Department
+(
+DEPTID INT auto_increment,
+deptcode VARCHAR(255) not null,
+chair VARCHAR(50) not null,
+PRIMARY KEY(DEPTID)
+)
+Engine=innodb;
+
+
+INSERT INTO Department (deptCode,chair)
+VALUES ("INFO",2),
+("GEOG",8),
+("BUS",9);
+
+############################################ Faculty ######################################
+
+Referenced by: Class, FacultyEmail
+
+CREATE TABLE Faculty
+(
+FID INT auto_increment,
+rank VARCHAR(50),
+hireDate DATE,
+phone VARCHAR(255) not null,
+PRIMARY KEY(FID)
+)
+engine=innodb;
+
+
+INSERT INTO Faculty (rank,hireDate,phone)
+VALUES
+("Research Associate","2011-11-10","(412) 886-7681"),
+("Professor","2005-07-07","(193) 680-3919"),
+("Research Associate","2012-03-12","(596) 399-1996"),
+("Associate Professor","2002-01-08","(166) 636-7922"),
+("Associate Professor","2007-12-11","(329) 321-4908"),
+("Associate Professor","2008-06-04","(970) 875-8018"),
+("Research Associate","2005-11-02","(688) 617-9385"),
+("Professor","2009-01-28","(747) 723-2583"),
+("Professor","2013-01-06","(173) 123-3020"),
+("Research Associate","2008-01-01","(709) 899-9108");
+
+############################################ Faculty Email ######################################
+
+Referenced by: 
+
+CREATE TABLE FacultyEmail
+(
+email VARCHAR(255) not null,
+FID int,
+FOREIGN KEY(FID) REFERENCES Faculty(FID)
+)
+engine=innodb;
+
+
+INSERT INTO FacultyEmail (email,FID)
+VALUES
+("Lorem.ipsum@Donecestmauris.org",1),
+("nisi.magna@lobortismaurisSuspendisse.org",2),
+("Donec.tincidunt@eudui.com",3),
+("Sed@faucibusid.edu",4),
+("libero@suscipit.org",5),
+("risus@auctorvitaealiquet.org",6),
+("sollicitudin.adipiscing@aliquamarcuAliquam.net",7),
+("hendrerit.a@Mauris.co.uk",8),
+("nisi@primis.net",9),
+("nisi.Aenean.eget@ligulatortordictum.com",10);
+
+############################################ Major ######################################
+
+Referenced by: StudentMajor
+
+CREATE TABLE Major
+(
+MID INT auto_increment,
+title VARCHAR(255) not null,
+DEPTID INT,
+PRIMARY KEY(MID),
+FOREIGN KEY(DEPTID) REFERENCES Department(DEPTID)
+)
+engine=innodb;
+
+
+INSERT INTO Major (title,DEPTID)
+VALUES("Informatics",1),
+("American Geology",2),
+("Accounting",3),
+("Finance",3);
+
+############################################ Room ######################################
+LOTS OF WARNINGS
+
+Referenced by: RoomFeatures, AdvisorAOE, Class
+
+CREATE TABLE Room
+(
+RID INT AUTO_INCREMENT,
+capacity INT(11) NOT NULL,
+buildingName VARCHAR(50) NOT NULL,
+street VARCHAR(50),
+city VARCHAR(50),
+state VARCHAR(2),
+zip INT(11),
+roomType VARCHAR(50) NOT NULL,
+PRIMARY KEY (RID)
+)
+Engine=innodb;
+
+
+INSERT INTO Room (RID,capacity,buildingName,street,city,state,zip,roomType)
+VALUES (1,147,"Johnson","17 Faucibus Road","Huntsville","Alabama","5709","Classroom"),
+(2,279,"Johnson","17 Faucibus Road","Huntsville","Alabama","5709","Classroom"),
+(3,41,"Johnson","17 Faucibus Road","Huntsville","Alabama","5709","Classroom"),
+(4,179,"Johnson","17 Faucibus Road","Huntsville","Alabama","5709","Office"),
+(5,196,"Johnson","17 Faucibus Road","Huntsville","Alabama","5709","Office"),(6,244,"Mcpherson","6588 Adipiscing Ave","Huntsville","Alabama","5709","Office"),
+(7,149,"Mcpherson","6588 Adipiscing Ave","Huntsville","Alabama","5709","Office"),
+(8,53,"Mcpherson","6588 Adipiscing Ave","Huntsville","Alabama","5709","Office"),
+(9,175,"Mcpherson","6588 Adipiscing Ave","Huntsville","Alabama","5709","Classroom"),
+(10,29,"Mcpherson","6588 Adipiscing Ave","Huntsville","Alabama","5709","Classroom"),
+(11,204,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Classroom"),
+(12,93,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Classroom"),
+(13,7,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Classroom"),
+(14,217,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Office"),
+(15,193,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Office"),
+(16,204,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Office"),
+(17,93,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Office"),
+(18,7,"Curtis","500 Apple Ave","Huntsville","Alabama","5709","Office");
+
+
+############################################ RoomFeatures ######################################
+
+Referenced by: 
+
+CREATE TABLE RoomFeatures
+(
+feature VARCHAR(100),
+RID INT,
+FOREIGN KEY (RID) REFERENCES Room (RID)
+)
+Engine=innodb;
+
+insert into RoomFeatures(feature,RID)
+values
+('Chalk Boards',1),
+('Computer Lab',2),
+('Smart Board',5),
+('Chalk Boards',3),
+('Computer Lab',7),
+('Smart Board',9),
+('Stage',4),
+('White Boards',12),
+('Computer Lab',18),
+('Computer Lab',17),
+('Smart Board',15);
+
+
+############################################ Semester ######################################
+
+Referenced by: Class
+
+CREATE TABLE Semester
+(
+SEMCODE VARCHAR(5) NOT NULL,
+title VARCHAR(50) NOT NULL,
+startDate DATE,
+endDate DATE,
+PRIMARY KEY (SEMCODE)
+)
+Engine=innodb;
+
+
+INSERT INTO Semester (SEMCODE,title,startDate,endDate)
+VALUES ("FA-15","Fall 2015",2015-08-20,2015-12-20),
+("FA-16","Fall 2016",2016-08-20,2016-12-20),
+("SP-15","Spring 2015",2015-01-05,2015-05-20),
+("SP-16","Spring 2016",2016-01-05,2016-05-20);
+
+############################################ Student ######################################
+
+Referenced by: StudentCourseDetails, StudentEmail, StudentMajor, StudentPhone
+
+create table Student
+(
+SID int(11) auto_increment,
+fName varchar(50) not null,
+lName varchar(100) not null,
+street varchar(100),
+city varchar(50),
+state varchar(100),
+zip int(11),
+parentName varchar(200),
+parentPhone varchar(20),
+primary key (SID))
+Engine = innodb;
+
+
+INSERT INTO Student (fName,lName,street,city,state,zip,parentName,parentPhone)
+VALUES
+("Mariam","Fry","Ap #204-8302 Commodo Rd.","Bangor","ME","34805","Darryl","(794) 799-4355"),
+("Rhona","Mayer","Ap #493-6782 Eros. Avenue","Memphis","TN","13245","Sophia","(424) 139-2730"),
+("Jared","Reilly","P.O. Box 559, 5213 Aliquam Road","Bozeman","MT","17147","Irene","(119) 234-3459"),
+("Reece","Mckenzie","2127 Lacus. Ave","Grand Island","NE","63818","Fulton","(581) 367-1274"),
+("Walter","Hines","P.O. Box 630, 1885 Sem Avenue","Montpelier","VT","17089","Joelle","(682) 312-7709"),
+("Olga","Contreras","935-8931 Faucibus. St.","Portland","ME","32029","Upton","(826) 504-3279"),
+("Idona","Wells","P.O. Box 258, 6407 Libero. Rd.","Wichita","KS","33362","Inez","(491) 212-8361"),
+("Briar","Perez","147-3305 Elementum Ave","Columbia","MO","44602","Jessamine","(198) 528-5076"),
+("Xavier","Witt","249 Suspendisse Road","Mesa","AZ","86335","Britanni","(643) 816-6403"),
+("Prescott","Leblanc","223-2750 Proin Rd.","Knoxville","TN","61527","Ryder","(796) 829-8265"),
+("Owen","Clark","Ap #353-8012 Pellentesque Road","Oklahoma City","OK","28752","Kyra","(626) 703-6301"),
+("Reece","Reynolds","P.O. Box 685, 9095 Arcu. Road","Des Moines","IA","44162","Hanae","(186) 958-1522"),
+("Jared","Newton","396-946 Risus. Ave","Kapolei","HI","74610","Shana","(285) 909-6481"),
+("India","Arnold","Ap #466-6346 Auctor. Av.","Fort Collins","CO","39588","Willow","(857) 358-5529"),
+("Porter","Everett","3880 Fermentum Road","Cincinnati","OH","62772","Katell","(862) 948-6986");
+
+
+######################################### StudentsTakingClasses ##################################
+
+Referenced by: 
+
+create table StudentsTakingClasses
+(
+    SID int(11),
+    CNUM varchar(200),
+    gpa decimal(3,2),
+    letterGrade varchar(2),
+    foreign key(SID) references Student(SID),
+    foreign key(CNUM) references Course(CNUM)
+)
+Engine=innodb;
+
+INSERT INTO StudentsTakingClasses (SID,CNUM,gpa,letterGrade)
+VALUES
+(13,"G-300","3.86",'A'),(7,"I-300","2.83",'B-'),(7,"A-300","0.59",'F'),(2,"I-453","0.30",'F'),
+(12,"M-300","2.73",'B-'),(2,"I-300","0.73",'D-'),(11,"M-300","2.94",'B-'),(9,"A-201","3.68",'A-'),
+(13,"G-201","3.67",'A-'),(13,"G-100","3.02",'B'),(13,"G-300","1.91",'C-'),(3,"I-400","2.19",'C'),
+(3,"P-300","3.97",'A-'),(15,"I-308","1.49",'D+'),(8,"I-101","3.13",'B'),(14,"X-300","3.33",'B+'),
+(12,"F-300","1.96",'C-'),(1,"A-100","1.50",'D+'),(6,"A-300","2.92",'B-'),(14,"G-300","0.97",'D-'),
+(3,"I-201","2.61",'C+'),(1,"G-100","2.48",'C+'),(3,"I-300","0.64",'F'),(13,"I-201","2.71",'B-'),
+(5,"P-300","0.77",'D-'),(13,"M-300","3.23",'B'),(14,"G-300","2.26",'C'),(7,"G-100","2.46",'C+'),
+(10,"I-101","1.22",'D'),(5,"I-453","3.74",'A-'),(1,"I-308","2.98",'B-'),(2,"P-300","3.02",'B'),
+(9,"G-300","0.02",'F'),(11,"A-100","1.03",'D'),(3,"I-201","1.61",'D+'),(10,"P-300","3.05",'B'),
+(3,"I-201","1.84",'C-'),(5,"G-201","3.34",'B+'),(5,"I-201","3.62",'B+'),(1,"G-300","1.13",'D'),
+(6,"M-300","2.46",'C+'),(13,"I-300","2.43",'C+'),(13,"G-230","2.74",'B-'),(13,"P-300","3.90",'A-'),
+(7,"I-453","2.56",'C+'),(15,"M-300","2.90",'B-'),(1,"G-230","0.39",'F'),(10,"X-300","2.29",'C'),
+(14,"M-300","1.51",'D+'),(1,"X-300","2.86",'B-'),(12,"A-201","3.84",'A-'),(4,"G-150","3.69",'A-'),
+(9,"A-201","0.29",'F'),(14,"F-300","1.88",'C-'),(2,"A-300","3.68",'A-'),(9,"X-300","0.13",'F'),
+(11,"A-100","1.76",'C-'),(10,"G-300","1.31",'D'),(6,"I-300","2.95",'B-'),(5,"G-300","1.72",'C-'),
+(9,"I-300","1.16",'D'),(8,"M-300","0.72",'D-'),(2,"F-300","0.38",'F'),(8,"G-150","3.40",'B+'),
+(1,"G-300","0.71",'D-'),(9,"I-453","3.70",'A-'),(9,"I-308","0.65",'F'),(4,"I-308","2.81",'B-'),
+(8,"G-150","3.49",'B+'),(2,"I-300","1.69",'C-'),(5,"I-453","3.79",'A-'),(12,"I-308","0.07",'F'),
+(2,"A-300","0.15",'F'),(1,"X-300","3.92",'A-'),(4,"A-100","0.97",'D-'),(8,"P-300","1.15",'D'),
+(5,"G-201","1.88",'C-'),(1,"M-300","2.48",'C+'),(5,"I-453","3.21",'B'),(11,"G-100","0.51",'F'),
+(6,"I-101","0.07",'F'),(7,"I-201","0.31",'F'),(11,"A-100","2.28",'C'),(7,"A-300","2.27",'C'),
+(2,"A-300","3.50",'B+'),(10,"A-100","0.35",'F'),(14,"M-300","0.74",'D-'),(9,"G-230","3.33",'B+'),
+(7,"I-400","2.63",'C+'),(7,"P-300","3.81",'A-'),(15,"P-300","1.81",'C-'),(9,"M-300","1.26",'D'),
+(2,"G-300","0.13",'F'),(3,"F-300","0.33",'F'),(8,"A-300","2.24",'C'),(10,"F-300","0.63",'F'),
+(2,"I-400","0.54",'F'),(8,"I-101","2.79",'B-'),(9,"G-201","1.41",'D+'),(2,"A-100","3.45",'B+');
+
+############################################ StudentEmail ######################################
+
+create table StudentEmail
+(
+SID int(11),
+email varchar(254),
+foreign key(SID) references Student(SID)
+)
+Engine = innodb;
+
+
+INSERT INTO StudentEmail (SID,email)
+VALUES
+(5,"semper.erat.in@nibhAliquamornare.co.uk"),
+(6,"Duis.sit@fermentumfermentum.com"),
+(7,"risus.at@et.edu"),
+(8,"Etiam.imperdiet@Crasdictumultricies.org"),
+(9,"risus.quis@sed.ca"),
+(10,"Suspendisse.non@aliquet.net"),
+(11,"sit@amet.com"),
+(12,"dolor.tempus.non@vehicula.co.uk"),
+(13,"ipsum.cursus@dapibusquam.net"),
+(14,"semlimeball.in@nibornare.co.uk"),
+(15,"nonummy.ultricies@MorbivehiculaPellentesque.com");
+
+############################################ StudentMajor ######################################
+
+CREATE TABLE StudentMajor
+(
+SID INT,
+MID INT,
+signDate date,
+FOREIGN KEY(SID) REFERENCES Student(SID),
+FOREIGN KEY(MID) REFERENCES Major(MID)
+)
+engine=innodb;
+
+
+INSERT INTO StudentMajor (SID,MID,signDate)
+VALUES (1,3,2015-10-3),
+(5,3,2015-08-13),
+(10,3,2015-04-22),
+(2,1,2014-06-05),
+(6,1,2015-09-13),
+(11,1,2015-10-07),
+(3,2,2015-11-12),
+(7,2,2014-12-20),
+(12,2,2015-11-09);
+
+
+############################################ StudentPhone ######################################
+
+create table StudentPhone
+(
+SID int(11),
+phone varchar(20),
+foreign key(SID) references Student(SID)
+)
+Engine = innodb;
+
+
+INSERT INTO StudentPhone (SID,phone)
+VALUES
+(1, "(329) 690-0962"),
+(2, "(780) 439-6304"),
+(3, "(717) 457-4941"),
+(4, "(387) 361-0790"),
+(5, "(310) 766-4746"),
+(6, "(863) 617-2488"),
+(7, "(511) 236-4730"),
+(8, "(301) 474-4558"),
+(9, "(486) 902-0451"),
+(10, "(748) 890-1628");
+
+
+############################################ 			  ######################################
+############################################ 			  ######################################
+############################################ Queries	  ######################################
+############################################ 			  ######################################
+############################################ 			  ######################################
+
+1b Produce a class roster for a *specified class* sorted by student’s last name, first name.
+At the end, include the average grade (GPA for the class.) (10 points)
+
+
+SELECT s.fname, s.lname, ROUND(AVG(stc.gpa),2) as GPA
+FROM Student as s, StudentsTakingClasses as stc
+WHERE s.SID = stc.SID
+AND stc.CNUM = 'I-101'
+GROUP BY s.fname with rollup
+ORDER BY s.lname ASC
+;
+
+DONE BUT NOT ORDERED CORRECTLY
+
+############################################ 			  ######################################
+
+# 2b Produce a list of rooms that are equipped with *some feature*—e.g., “wired instructor station”—that are available at a
+# particular time. (10 points)
+
+select distinct r.RID as RID, r.roomType as roomType, r.buildingName as buildingName
+from Room as r, RoomFeatures as rf, Class as c
+where c.RID = r.RID
+and r.RID = rf.RID
+and rf.feature = 'Smart Board'
+and '12:15:00' between c.startTime and c.endTime;
+
+Done (10)
+
+3b Produce a list of faculty who have never taught a *specified course*. (10 points)
+
+SELECT f.FID 
+FROM Faculty as f
+WHERE f.FID NOT IN
+(SELECT DISTINCT f.FID
+FROM Class as c
+WHERE c.FID = f.FID
+AND c.CNUM = "I-101")
+;                  
+
+DONE (10)
+
+############################################ 			  ######################################
+
+4a Produce a list of students who are eligible to register for a *specified course* that has a prerequisite. (5 points)
+
+SELECT DISTINCT concat(s.fname,' ',s.lname) as name
+FROM Student as s, Course as c, CoursePreq as cp, StudentsTakingClasses as stc
+WHERE s.SID =stc.SID
+AND stc.CNUM = c.CNUM
+AND c.CNUM = cp.coursePreq
+AND cp.CNUM = "I-300"
+;
+
+DONE
+
+4b ......but do not include those students who have already taken the course that has the prerequisite. (10 points)
+
+SELECT DISTINCT concat(s.fname,' ',s.lname) as name
+FROM Student as s, Course as c, CoursePreq as cp, StudentsTakingClasses as stc
+WHERE s.SID =stc.SID
+AND stc.CNUM = c.CNUM
+AND c.CNUM = cp.coursePreq
+AND cp.CNUM = "I-300"
+AND stc.SID NOT IN (
+SELECT stc.SID
+FROM StudentsTakingClasses as stc
+WHERE stc.CNUM = "I-300")
+;
+
+DONE (10)
+
+4c Produce a list of all students who took a course that had a prerequisite but the student had not taken the prerequisite. Include the semester, the course subject and number, and the grade the student received. (15 points)
+
+
+# 6c Produce a list of students and faculty who were in a *particular building* at a *particular time*. 
+###     Also include in the list, faculty and advisors who have offices in that building. (15 points)
+
+select distinct s.SID as SID, concat(s.fName, ' ', s.lName) as studentName, f.FID as FID, f.rank as rank, a.AID as AID, concat(a.fName, ' ', a.lName) as advisorName, r.buildingName as buildingName, r.roomType as roomType
+from Student as s, Faculty as f, Room as r, Class as c, StudentsTakingClasses as stc, Advisor as a
+where s.SID = stc.SID
+and stc.CNUM = c.CNUM
+and a.RID = r.RID
+and f.FID = c.FID
+and c.RID = r.RID
+and (r.buildingName = 'Curtis' or ('12:15:00' not between c.startTime and c.endTime) or r.roomType = 'Office'); 
+
+Done (15) 
+
+
+7a produce alphabetical list of students with their majors who are advised by *specified advisor*
+
+SELECT DISTINCT s.lname, s.fname, m.title
+FROM Student as s, AdviseStudent as a, Major as m, StudentMajor as sm
+WHERE s.SID = a.SID
+AND sm.SID = s.SID
+AND m.MID = sm.MID
+AND a.AID = 3
+ORDER BY s.lname, s.fname
+;
+
+DONE
+
+################################# 9a ####################################
+
+select m.title as Major, d.deptcode as Department,m.hoursReq as HoursRequired, m.gpaReq as gpaRequired
+from Major as m, Department as d
+where m.DEPTID = d.DEPTID;
+
+
+################################# Additonal Query ##########################
+
+select AVG(stc.gpa) as AverageGPA, m.title as Major
+from StudentsTakingClasses as stc, Major as m, StudentMajor as sm
+where stc.SID = sm.SID
+    and sm.MID = m.MID
+    group by Major;
