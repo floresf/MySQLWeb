@@ -5,3 +5,8 @@
 
 
 final_proj_fill_tables.txt contains all of the create, insert, and select statements using MySQL.
+
+ MySQLWeb/final_proj_ERD.pdf 
+ 
+ ![ERD diagram](https://raw.githubusercontent.com/floresf/MySQLWeb/master/ERD_final.png)
+ 
