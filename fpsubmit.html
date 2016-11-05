@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <title>Final Project: Team 11</title>
+        <style>
+            body {
+                background-color: lightblue;
+            }
+            #intro {
+                background: white;
+                text-align: center;
+            }
+        </style>
+    </head>
+    
+    <body>
+    <div style="border: 18px solid grey; padding: 20px 25px" id="intro">
+    <h1>Final Project: Team 11</h1>
+    <h3>Jianrui Hu</h3>
+    <h3>Dan Ryan</h3>
+    <h3>Robert Mooney</h3>
+    <h3>Fernando Flores</h3>
+    </div>
+    
+    <br><br><br>
+    <h1 style="text-align: center">Required Queries</h1>
+        <br>
+    
+    <!-- QUERY 1 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 1B</h2>
+        <p><b>1b: </b>Produce a class roster for a *specified class* sorted by student’s last name, first name. At the end, include the average grade (GPA for the class.)</p>
+        
+        <form action="fpformhandler.php" method="post">
+        Specify class: <select name="class1">
+            <option value="A-100">A-100</option>
+            <option value="A-201">A-201</option>
+            <option value="A-300">A-300</option>
+            <option value="F-300">F-300</option>
+            <option value="G-100">G-100</option>
+            <option value="G-150">G-150</option>
+            <option value="G-201">G-201</option>
+            <option value="G-230">G-230</option>
+            <option value="G-300">G-300</option>
+            <option value="G-400">G-400</option>
+            <option value="I-101">I-101</option>
+            <option value="I-201">I-201</option>
+            <option value="I-202">I-202</option>
+            <option value="I-300">I-300</option>
+            <option value="I-308">I-308</option>
+            <option value="I-400">I-400</option>
+            <option value="I-453">I-453</option>
+            <option value="M-300">M-300</option>
+            <option value="P-300">P-300</option>
+            <option value="X-300">X-300</option>
+            </select><br><br>
+            <input type="submit" value="Run Query" name="query1"><br>
+        
+        </form>
+        
+    </div>
+    <br><br><br>
+    
+    <!-- QUERY 2B -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 2B</h2>
+        <p><b>2b: </b>Produce a list of rooms that are equipped with *some feature* that are available at 12:15:00.</p><br>
+        
+        <form action="fpformhandler.php" method="post">
+        Select Feature: <select name="feature">
+            <option value="Chalk Boards">Chalk Boards</option>
+            <option value="Computer Lab">Computer Lab</option>
+            <option value="Smart Board">Smart Board</option>
+            <option value="Stage">Stage</option>
+            <option value="White Boards">White Boards</option>
+            </select> 
+            <br><br>
+            <input type="submit" value="Run Query" name="query2">
+        
+        </form>    
+    </div>
+    
+    <br><br><br>
+    
+    <!-- QUERY 3B -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 3B</h2>
+        <p><b>3b: </b>Produce a list of faculty who have never taught *specified course*.</p>
+        
+        <form action="fpformhandler.php" method="post">
+            Specify class: <select name="class2">
+            <option value="A-100">A-100</option>
+            <option value="A-201">A-201</option>
+            <option value="A-300">A-300</option>
+            <option value="F-300">F-300</option>
+            <option value="G-100">G-100</option>
+            <option value="G-150">G-150</option>
+            <option value="G-201">G-201</option>
+            <option value="G-230">G-230</option>
+            <option value="G-300">G-300</option>
+            <option value="G-400">G-400</option>
+            <option value="I-101">I-101</option>
+            <option value="I-201">I-201</option>
+            <option value="I-202">I-202</option>
+            <option value="I-300">I-300</option>
+            <option value="I-308">I-308</option>
+            <option value="I-400">I-400</option>
+            <option value="I-453">I-453</option>
+            <option value="M-300">M-300</option>
+            <option value="P-300">P-300</option>
+            <option value="X-300">X-300</option>
+            </select><br><br>
+            <input type="submit" value="Run Query" name="query3">
+        </form>    
+        
+    </div>
+    <br><br><br>
+        
+      <!-- QUERY 4 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 4B</h2>
+        <p><b>4b: </b>Produce a list of students who are eligible to register for *specified course* that has a prerequisite ...but do not include those students who have already taken the course that has the prerequisite.</p>
+        
+        <form action="fpformhandler.php" method="post">
+            Specify class: <select name="class3">
+            <option value="A-201">A-201</option>
+            <option value="G-300">G-300</option>
+            <option value="I-300">I-300</option>
+            <option value="I-400">I-400</option>
+            </select><br><br>
+            <input type="submit" value="Run Query" name="query4">
+        </form>    
+        
+    </div>
+    <br><br><br>
+        
+          <!-- QUERY 6 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 6C</h2>
+        <p><b>6c: </b>Produce a list of students and faculty who were in the *particular building* at a *particular time*. Also include in the list, faculty and advisors who have offices in that building.</p>
+        
+        <form action="fpformhandler.php" method="post">
+            Select Building: <select name="building">
+            <option value="Johnson">Johnson</option>
+            <option value="Mcpherson">Mcpherson</option>
+            <option value="Curtis">Curtis</option>
+            </select><br><br>
+            Specify Time (hh:mm:ss): <input type="text" name="time"><br>
+            <input type="submit" value="Run Query" name="query6">
+        </form>    
+        
+    </div>
+    <br><br><br>
+        
+              <!-- QUERY 7 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Query 7A</h2>
+        <p><b>7A: </b>Produce alphabetical list of students with their majors who are advised by a *specified advisor*.</p>
+        
+        <form action="fpformhandler.php" method="post">
+        Select Advisor: <select name="advisor">
+        <option value="1">Emily Logan</option>
+        <option value="2">Evan Mathews</option>
+        <option value="3">Timothy Donaldson</option>
+        <option value="4">Hilel Harper</option>
+        <option value="5">Rose Lang</option>
+            </select>
+            <input type="submit" value="Run Query" name="query7">
+        </form>    
+        
+    </div>
+    <br><br><br>
+        
+    <h1 style="text-align: center">Additional Queries</h1>
+    <br><br>
+        
+                  <!-- Additional Query 1 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Additional Query 1</h2>
+        <p><b>1: </b>Display the course number and title, and total amount of times 'I-300' has been offered over the previous 4 semesters.</p>
+        
+        <form action="fpformhandler.php" method="post">
+            <input type="submit" value="Run Query" name="aquery1">
+        </form>    
+        
+    </div>
+    <br><br><br>
+        
+                      <!-- Additional Query 2 -->
+    <div style="border: 2px solid; padding: 10px 25px; background: white">
+        <h2 style="text-align: center">Additional Query 2</h2>
+        <p><b>2: </b>Return Average GPAs of the students who have declared each major, in descending order of average GPA.</p>
+        
+        <form action="fpformhandler.php" method="post">
+            <input type="submit" value="Run Query" name="aquery2">
+        </form>    
+        
+    </div>
+    <br><br><br>
+    
+    </body>
+
+
+
+</html>
